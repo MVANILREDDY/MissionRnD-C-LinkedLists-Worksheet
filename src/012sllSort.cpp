@@ -20,7 +20,39 @@ struct node {
 	int data;
 	struct node *next;
 };
+void sll_012_sort(struct node *head)
+{
+	struct node *itr;
 
-void sll_012_sort(struct node *head){
-	
+	int low = 0, mid = 0, high = 0, count = 0;
+	itr = head;
+	while (itr != NULL)
+	{
+
+		(itr->data == 2) ? high++ : itr->data == 1 ? mid++ : low++;
+		itr = itr->next;
+		count++;
+	}
+	itr = head;//itr node is used to traverse entire linkedlist
+	while (count)
+	{
+		if (low)
+		{
+			itr->data = 0;
+			itr = itr->next;
+			low--;
+		}
+		else if (mid)
+		{
+			itr->data = 1;
+			itr = itr->next;
+			mid--;
+		}
+		else
+		{
+			itr->data = 2;
+			itr = itr->next;
+		}
+		count--;
+	}
 }
